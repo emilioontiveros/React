@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React en mi HTML</title>
+  </head>
+  <body>
+    <h1>React en mi HTML</h1>
+
+    <!--Agregando React en proyecto existente; agregamos la etiqueta-->
+    <div id="button_container"></div>
+
+    <!--Cargar React-->
+    <!--Nota: En producción debemos reeplazar "development,js" con 
+    "poduction.min.js"-->
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <!--Cargamos nuestro componente React.-->
+    <script src="button.js"></script>
+  </body>
+</html>
+
+---------------------------------------------------------------------------
+
+//Este método nos permite crear elementos dentro de React.
+const e = React.createElement;
+
+//Estto es un componete React!
+const Button = () =>
+  e("button", { onClick: () => alert("Has hecho click!") }, "Haz Click!");
+
+// Seleccionamos el div dentro de nuestro index.html
+const domContainer = document.querySelector("#button_container");
+
+//Aquí llamamos un método de React que crea la base
+//para poder utilizar la librería dentro de nuestro <div>.
+const root = ReactDOM.createRoot(domContainer);
+
+//Con el método render vamos a mostrar el componente Button
+root.render(e(Button));
+
+
